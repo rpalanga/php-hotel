@@ -40,6 +40,29 @@ $hotels = [
 
 ];
 
+
+
+
+
+$parking = isset($_GET['parking']);
+
+if($parking){
+    
+    $parking_filter = array_filter($hotels, function ($hotel) {
+        return $hotel['parking'] === true;
+    });
+};
+
+// $stars = isset($_GET['vote']);
+
+// if($stars ){
+//     $stars_filter = array_filter($hotels, function ($hotel){
+//         return $hotel['vote']== $value;
+//     })
+// }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +80,11 @@ $hotels = [
 
 <body>
     <div class="container my-3  ">
-        <h1></h1>
+        <h1 class="text-center my-4 fw-bolder fs-1 bg-danger-subtle rounded-2 " style=" color:chocolate">Scegli il Miglior Hotel <br><small>per te</small></h1>
 
-        <table class="table my-3 border ">
-            <thead>
-                <tr>
+        <table class="table my-3 border">
+            <thead class="bg-body-secondary ">
+                <tr >
                     <th scope="col" style="color:brown">Name</th>
                     <th scope="col" style="color:brown">Description</th>
                     <th scope="col" style="color:brown">Parking</th>
@@ -73,30 +96,118 @@ $hotels = [
 
             </thead>
             <tbody>
-            <?php
+                <?php
 
                 foreach ($hotels as $CurrentElement) {
-                    echo"
+                    echo "
                      <tr>";
 
-                        foreach($CurrentElement as $key => $value){
+                    foreach ($CurrentElement as $key => $value) {
 
                         echo  " 
                             <th>$value</th> 
                             ";
-                         }
-        
-        
+                    }
+
+
                     echo "        
 
                         </tr>";
-       
-                    };
+                };
                 ?>
-               
-               
+
+
             </tbody>
         </table>
+                <!-- metodo per selezione parcheggio -->
+        <form method="GET">
+            <input type="checkbox"  name="parking" >
+            <label name="parking"> Alberghi con il parcheggio </label><br>
+            <button type="submit" class="btn btn-danger">Applica Filtro</button>
+        </form>
+       
+
+
+        <table class="table my-3 border " action="" method="GET">
+            <thead class="bg-body-secondary ">
+                <tr >
+                    <th scope="col" style="color:brown">Name</th>
+                    <th scope="col" style="color:brown">Description</th>
+                    <th scope="col" style="color:brown">Parking</th>
+                    <th scope="col" style="color:brown">Vote</th>
+                    <th scope="col" style="color:brown">Distance</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <?php
+
+                    foreach ($parking_filter as $hotel) {
+                        echo "<tr>";
+                        echo "<th>" . $hotel['name'] . "</th>";
+                        echo "<th>" . $hotel['description'] . "</th>";
+                        echo "<th>" . $hotel['parking'] . "</th>"; 
+                        echo "<th>" . $hotel['vote'] . "</th>";
+                        echo "<th>" . $hotel['distance_to_center'] . "</th>";
+                        echo "</tr>";
+                    }
+
+            
+                ?>
+
+
+                </tbody>
+            </table>
+
+            <!-- fine metodo selezine parcheggio -->
+
+            <!-- metodo selezione value -->
+<!-- 
+        <form method="GET">
+            <input type="number" name="vote" min="1" max="5">
+            <label name="vote"> Alberghi con il parcheggio </label><br>
+            <button type="submit" class="btn btn-danger">Applica Filtro</button>
+        </form>
+       
+
+
+        <table class="table my-3 border " action="" method="GET">
+            <thead class="bg-body-secondary ">
+                <tr >
+                    <th scope="col" style="color:brown">Name</th>
+                    <th scope="col" style="color:brown">Description</th>
+                    <th scope="col" style="color:brown">Parking</th>
+                    <th scope="col" style="color:brown">Vote</th>
+                    <th scope="col" style="color:brown">Distance</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <?php
+
+                    foreach ($star_filter as $hotel) {
+                        echo "<tr>";
+                        echo "<th>" . $hotel['name'] . "</th>";
+                        echo "<th>" . $hotel['description'] . "</th>";
+                        echo "<th>" . $hotel['parking'] . "</th>"; 
+                        echo "<th>" . $hotel['vote'] . "</th>";
+                        echo "<th>" . $hotel['distance_to_center'] . "</th>";
+                        echo "</tr>";
+                    }
+
+            
+                ?>
+
+
+                </tbody>
+            </table> -->
+
+
+
     </div>
 
 
