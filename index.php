@@ -59,48 +59,42 @@ $hotels = [
     <div class="container my-3  ">
         <h1></h1>
 
-        <table class="table">
+        <table class="table my-3 border ">
             <thead>
-                <?php
+                <tr>
+                    <th scope="col" style="color:brown">Name</th>
+                    <th scope="col" style="color:brown">Description</th>
+                    <th scope="col" style="color:brown">Parking</th>
+                    <th scope="col" style="color:brown">Vote</th>
+                    <th scope="col" style="color:brown">Distance</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+            <?php
 
                 foreach ($hotels as $CurrentElement) {
                     echo"
-                        <tr>";
+                     <tr>";
 
-                        foreach($CurrentElement as $value){
+                        foreach($CurrentElement as $key => $value){
 
-                            echo  " 
+                        echo  " 
                             <th>$value</th> 
                             ";
-                        }
-                        
-                        // <th scope="col">Last</th>
-                        // <th scope="col">Handle</th>
+                         }
+        
+        
                     echo "        
 
-                    </tr>";
-                       
-                };
-                    ?>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                        </tr>";
+       
+                    };
+                ?>
+               
+               
             </tbody>
         </table>
     </div>
